@@ -54,7 +54,7 @@ namespace CrmApp
             return choice;
         }
 
-
+        //TODO: Lets play with CreateCustomer Method!
         public Customer CreateCustomer()
         {
             return null;

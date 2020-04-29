@@ -50,8 +50,9 @@ namespace CrmApp
 
         }
 
-
-        //methods
+        //
+        //Summary:
+        //      methods
         public void IncreasePrice(decimal percentage)
         {
             if (category == 1) { 
@@ -64,6 +65,9 @@ namespace CrmApp
                 
         }
 
+        /// <summary>
+        /// Printing prodcut's info.
+        /// </summary>
         public void Print()
         {
             Console.WriteLine( ToString());

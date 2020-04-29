@@ -26,7 +26,6 @@ namespace CrmApp
                 product.Price =Decimal.Parse( Console.ReadLine());
                 Console.WriteLine("Give the quantity ");
                 product.Quantity =Int32.Parse( Console.ReadLine());
-
                 return product;
             }
             catch(Exception  )
@@ -57,7 +56,25 @@ namespace CrmApp
         //TODO: Lets play with CreateCustomer Method!
         public Customer CreateCustomer()
         {
-            return null;
+            Customer customer = new Customer();
+            try
+            {
+                Console.WriteLine("Give the Name ");
+                customer.Name = Console.ReadLine();
+                Console.WriteLine("Give the Sex ");
+                customer.Sex = Console.ReadLine();
+                Console.WriteLine("Give the Age ");
+                customer.Age = Int32.Parse(Console.ReadLine());
+
+                return customer;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("You have not completed customer's questions properly." +
+                    " Please try again.");
+                return null;
+            }
+            
         }
 
         public Basket CreateBasket()
@@ -85,6 +102,9 @@ namespace CrmApp
                         break;
                     case 0:
                         Console.WriteLine("You selected to exit");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid number! Please type a number between 0 and 4.");
                         break;
 
                 }

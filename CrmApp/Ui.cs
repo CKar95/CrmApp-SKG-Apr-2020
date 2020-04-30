@@ -40,7 +40,7 @@ namespace CrmApp
         public int Menu()
         {
             Console.WriteLine("1. Add a product   2. Display basket " +
-                " 3. ShowCategories  4. TotalCost 0. Exit");
+                " 3. ShowCategories  4. TotalCost  5. Save 6. Load 0. Exit");
             Console.WriteLine("Give your choice");
             int choice = 0;
             try {
@@ -53,7 +53,7 @@ namespace CrmApp
             return choice;
         }
 
-        //TODO: Lets play with CreateCustomer Method!
+        
         public Customer CreateCustomer()
         {
             Customer customer = new Customer();
@@ -87,6 +87,9 @@ namespace CrmApp
                 choice = Menu();
                 switch (choice)
                 {
+                    case 0:
+                        Console.WriteLine("You selected to exit");
+                        break;
                     case 1:
                         Product product = CreateProduct();
                         basket.AddProduct(product);
@@ -100,8 +103,11 @@ namespace CrmApp
                     case 4:
                         Console.WriteLine("TotalCost= " + basket.TotalCost());
                         break;
-                    case 0:
-                        Console.WriteLine("You selected to exit");
+                    case 5:
+                        basket.Save("basket.txt");
+                        break;
+                    case 6:
+                        basket.Load("basket.txt");
                         break;
                     default:
                         Console.WriteLine("Invalid number! Please type a number between 0 and 4.");

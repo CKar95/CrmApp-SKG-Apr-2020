@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace CrmApp
@@ -56,5 +57,55 @@ namespace CrmApp
             return totalCost;
         }
 
+        public string Save(string fileName)
+        {
+            try
+            {
+                StreamWriter sw = new StreamWriter(fileName, true);
+                foreach (Product p in products)
+                {
+                    sw.WriteLine(p.Code + "," +
+                        p.Name + "," +
+                        p.Price + "," +
+                        p.Quantity);
+                }
+                sw.Close();
+            }
+            catch (Exception)
+            {
+                return "An error occured";
+            }
+            return "The date hava been saved";
+            
+        }
+
+        public string Load(string fileName)
+        {
+            try
+            {
+                products.Clear();
+                StreamReader sr = new StreamReader(fileName);
+                string line = sr.ReadLine();
+                while (line != null)
+                {
+                    string[] words = line.Split(",");
+                    Product product = new Product
+                    {
+                        Code = words[0],
+                        Name = words[1],
+                        Price = Decimal.Parse(words[2]),
+                        Quantity = Int32.Parse(words[3])
+                    };
+                    products.Add(product);
+                    line = sr.ReadLine();
+                }
+                //Den einai apareteio na kleinoume ton sr
+            }
+            catch (Exception)
+            {
+                return "An error occured";
+            }
+            return ("The date hava been printed");
+        }
     }
 }

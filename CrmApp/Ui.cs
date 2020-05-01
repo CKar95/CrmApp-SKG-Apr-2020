@@ -40,7 +40,7 @@ namespace CrmApp
         public int Menu()
         {
             Console.WriteLine("1. Add a product   2. Display basket " +
-                " 3. ShowCategories  4. TotalCost  5. Save 6. Load 0. Exit");
+                " 3. ShowCategories  4. TotalCost  5. Save 6. Load 7. Create Customer 0. Exit");
             Console.WriteLine("Give your choice");
             int choice = 0;
             try {
@@ -81,6 +81,7 @@ namespace CrmApp
         {
             Basket basket = new Basket();
             int choice;
+            basket.Load("basket.txt");
             
             do
             {
@@ -108,6 +109,9 @@ namespace CrmApp
                         break;
                     case 6:
                         basket.Load("basket.txt");
+                        break;
+                    case 7:
+                        Customer customer = CreateCustomer();
                         break;
                     default:
                         Console.WriteLine("Invalid number! Please type a number between 0 and 4.");

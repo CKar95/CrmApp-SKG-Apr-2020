@@ -61,7 +61,7 @@ namespace CrmApp
         {
             try
             {
-                StreamWriter sw = new StreamWriter(fileName, true);
+                StreamWriter sw = new StreamWriter(fileName, false);
                 foreach (Product p in products)
                 {
                     sw.WriteLine(p.Code + "," +
@@ -75,7 +75,7 @@ namespace CrmApp
             {
                 return "An error occured";
             }
-            return "The date hava been saved";
+            return "The data hava been saved";
             
         }
 
@@ -100,12 +100,13 @@ namespace CrmApp
                     line = sr.ReadLine();
                 }
                 //Den einai apareteio na kleinoume ton sr
+                sr.Close();
             }
             catch (Exception)
             {
                 return "An error occured";
             }
-            return ("The date hava been printed");
+            return ("The data hava been printed");
         }
     }
 }

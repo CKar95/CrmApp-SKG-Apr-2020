@@ -9,7 +9,6 @@ namespace CrmApp
         static void Main()
         {
             Ui ui = new Ui();
-            Customer customer = ui.CreateCustomer();
             Basket basket = ui.CreateBasket();
 
             

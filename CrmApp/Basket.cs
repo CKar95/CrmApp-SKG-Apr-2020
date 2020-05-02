@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CrmApp
 {
-    class Basket
+    public class Basket
     {
         private List<Product> products;
         public Customer Customer { get; set; }
@@ -52,7 +52,7 @@ namespace CrmApp
             decimal totalCost = 0;
             foreach (Product p in products)
             {
-                totalCost+=p.TotalCost;
+                //totalCost+=p.TotalCost;
             }
             return totalCost;
         }
@@ -64,10 +64,10 @@ namespace CrmApp
                 StreamWriter sw = new StreamWriter(fileName, false);
                 foreach (Product p in products)
                 {
-                    sw.WriteLine(p.Code + "," +
-                        p.Name + "," +
-                        p.Price + "," +
-                        p.Quantity);
+                    //sw.WriteLine(p.Code + "," +
+                    //    p.Name + "," +
+                    //    p.Price + "," +
+                    //    p.Quantity);
                 }
                 sw.Close();
             }
@@ -91,10 +91,10 @@ namespace CrmApp
                     string[] words = line.Split(",");
                     Product product = new Product
                     {
-                        Code = words[0],
-                        Name = words[1],
-                        Price = Decimal.Parse(words[2]),
-                        Quantity = Int32.Parse(words[3])
+                        //Code = words[0],
+                        //Name = words[1],
+                        //Price = Decimal.Parse(words[2]),
+                        //Quantity = Int32.Parse(words[3])
                     };
                     products.Add(product);
                     line = sr.ReadLine();

@@ -2,23 +2,23 @@
 
 namespace CrmApp
 {
-    class Customer
+    public class Customer
     {
-        public int Id { get;}
+        public int CustomerId { get; set; }
         public string Name { get ; set; }
         public string Sex { get; set; }
         public int Age { get; set; }
+        public string Email { get; set; }
 
         public Customer()
         {
-            Random rnd = new Random();
-            Id = rnd.Next(0, 100);
+            
         }
 
-        public override string ToString()
-        {
-            return $"Id= {Id} Name= {Name} Sex= {Sex} Age= {Age}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"Id= {Id} Name= {Name} Sex= {Sex} Age= {Age}";
+        //}
 
         public void Print()
         {

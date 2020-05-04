@@ -8,7 +8,7 @@ namespace CrmApp
     {
         //fields
         public int Category { get; set; }
-        public String ProductId { get; set; }
+        public string ProductId { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public decimal ProductDesrciption { get; set; }

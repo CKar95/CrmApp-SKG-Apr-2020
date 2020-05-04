@@ -14,18 +14,18 @@ namespace CrmApp
             //var basket = ui.CreateBasket();
 
             var dbContext = new CrmAppDbContext();
-            dbContext.Database.EnsureCreated();
+            //dbContext.Database.EnsureCreated();
 
             // Insert
-            //var customer = new Customer()
-            //{
-            //    Name = "Unkown Customer",
-            //    Sex = "Male",
-            //    Age = 25
-            //};
+            var customer = new Customer()
+            {
+                Name = "Unkown Customer",
+                Sex = "Male",
+                Age = 25
+            };
 
-            //dbContext.Add(customer);
-            //dbContext.SaveChanges();
+            dbContext.Add(customer);
+            dbContext.SaveChanges();
 
             //var customersList = new List<Customer>();
             //customersList.Add(new Customer {Name = "Unkown1 Customer", Sex = "Male",Age = 25 });
@@ -36,7 +36,11 @@ namespace CrmApp
 
             //dbContext.AddRange(customersList);
             //dbContext.SaveChanges();
-          
+
+            //var arr = new int[4] { 0, 14, 25, 14 };
+            //var first = arr.Where(i => i == 14).First();
+            //var single = arr.Where(i => i == 14).Single();
+
             // Select
             var customers = dbContext
                 .Set<Customer>()

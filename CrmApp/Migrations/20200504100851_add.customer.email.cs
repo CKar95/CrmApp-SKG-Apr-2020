@@ -2,7 +2,7 @@
 
 namespace CrmApp.Migrations
 {
-    public partial class addCustomerEmail : Migration
+    public partial class addcustomeremail : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

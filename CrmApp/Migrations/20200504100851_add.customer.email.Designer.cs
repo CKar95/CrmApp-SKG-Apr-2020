@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CrmApp.Migrations
 {
     [DbContext(typeof(CrmAppDbContext))]
-    [Migration("20200502115725_add.Customer.Email")]
-    partial class addCustomerEmail
+    [Migration("20200504100851_add.customer.email")]
+    partial class addcustomeremail
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

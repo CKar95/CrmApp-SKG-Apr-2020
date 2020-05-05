@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
+﻿using CrmApp.Options;
+using CrmApp.Services;
+using System;
 
 namespace CrmApp
 {
@@ -10,47 +8,58 @@ namespace CrmApp
     {
         static void Main()
         {
-            //var ui = new Ui();
-            //var basket = ui.CreateBasket();
-
-            var dbContext = new CrmAppDbContext();
-            //dbContext.Database.EnsureCreated();
-
-            // Insert
-            var customer = new Customer()
+            CustomerOption custOpt = new CustomerOption
             {
-                Name = "Unkown Customer",
-                Sex = "Male",
-                Age = 25
+                FirstName = "Maria",
+                LastName = "Pentagiotissa",
+                Address = "Athens",
+                Email = "maria@gmail.com",
+
             };
 
-            dbContext.Add(customer);
-            dbContext.SaveChanges();
+            using CrmDbContext db = new CrmDbContext();
+            CustomerManagement custMangr = new CustomerManagement(db);
 
-            //var customersList = new List<Customer>();
-            //customersList.Add(new Customer {Name = "Unkown1 Customer", Sex = "Male",Age = 25 });
-            //customersList.Add(new Customer { Name = "Unkown2 Customer", Sex = "Male", Age = 25 });
-            //customersList.Add(new Customer { Name = "Unkown3 Customer", Sex = "Male", Age = 25 });
-            //customersList.Add(new Customer { Name = "Unkown4 Customer", Sex = "Male", Age = 25 });
-            //customersList.Add(new Customer { Name = "Unkown5 Customer", Sex = "Male", Age = 25 });
 
-            //dbContext.AddRange(customersList);
-            //dbContext.SaveChanges();
+            // testing the creation of a customer
+            Customer customer = custMangr.CreateCustomer(custOpt);
+            Console.WriteLine(
+                $"Id= {customer.Id} Name= {customer.FirstName} Address= {customer.Address}");
 
-            //var arr = new int[4] { 0, 14, 25, 14 };
-            //var first = arr.Where(i => i == 14).First();
-            //var single = arr.Where(i => i == 14).Single();
 
-            // Select
-            var customers = dbContext
-                .Set<Customer>()
-                .Where(cust => cust.CustomerId == 6 && cust.Name == "Unkown2 Customer")
-                .SingleOrDefault();
-            //.ToList();
+            //testing reading a customer
+            Customer cx = custMangr.FindCustomerById(2);
+            Console.WriteLine(
+                $"Id= {cx.Id} Name= {cx.FirstName} Address= {cx.Address}");
 
-            //Remove
-            //dbContext.Remove(customer);
-            //dbContext.SaveChanges();
+
+            //testing updating
+            CustomerOption custChangingAddress = new CustomerOption
+            {
+                Address = "Lamia"
+            };
+            Customer c2 = custMangr.Update(custChangingAddress, 1);
+            Console.WriteLine(
+                $"Id= {c2.Id} Name= {c2.FirstName} Address= {c2.Address}");
+
+
+            //testing deletion
+
+            bool result = custMangr.DeleteCustomerById(2);
+            Console.WriteLine($"Result = {result}");
+            Customer cx2 = custMangr.FindCustomerById(2);
+            if (cx2 != null)
+            {
+                Console.WriteLine(
+                $"Id= {cx2.Id} Name= {cx2.FirstName} Address= {cx2.Address}");
+
+            }
+            else
+            {
+                Console.WriteLine("not found");
+            }
+
+
         }
     }
 }

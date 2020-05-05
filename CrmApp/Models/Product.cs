@@ -1,4 +1,5 @@
-﻿using System;
+﻿//using CrmApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,20 +7,31 @@ namespace CrmApp
 {
     public class Product
     {
-        //fields
-        public int Category { get; set; }
-        public string ProductId { get; set; }
+        ////fields
+        //private int category;
+        //private String code;
+
+        ////property that wraps the field code
+        //public string Code
+        //{
+        //    get { return "GR" + code; }
+        //    set { code = value; }
+        //}
+        //other properties
+        public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public decimal ProductDesrciption { get; set; }
-
+        public int Quantity { get; set; }
+        public List<BasketProduct> BasketProducts { get; set; }
+        //calculated property
+        public decimal TotalCost { get { return Price * Quantity; } }
 
 
         //constructors
         //constructor overloading
         public Product(int _category)
         {
-             Category = _category;
+             //category = _category;
         }
 
         //default constructor or empty
@@ -36,24 +48,24 @@ namespace CrmApp
             //   + " Quantity= " + Quantity
             //   + " TotalCost= " + TotalCost;
             // preferrable way using $
-            return $"Name= {Name} Price= {Price}";
+            return $"Name= {Name} Price= {Price} Quantity= {Quantity} TotalCost= {TotalCost}";
 
         }
 
         //
         //Summary:
         //      methods
-        public void IncreasePrice(decimal percentage)
-        {
-            if (Category == 1) { 
-                Price *= (1 + 0.1m);
-            }
-            else
-            {
-                Price *= (1 + percentage);
-            }
+        //public void IncreasePrice(decimal percentage)
+        //{
+        //    if (category == 1) { 
+        //        Price *= (1 + 0.1m);
+        //    }
+        //    else
+        //    {
+        //        Price *= (1 + percentage);
+        //    }
                 
-        }
+        //}
 
         /// <summary>
         /// Printing prodcut's info.

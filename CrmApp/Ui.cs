@@ -19,13 +19,13 @@ namespace CrmApp
             try { 
               
                 Console.WriteLine("Give the code ");
-              //  product.Code = Console.ReadLine();
+                //product.Code = Console.ReadLine();
                 Console.WriteLine("Give the name ");
                 product.Name = Console.ReadLine();
                 Console.WriteLine("Give the price ");
                 product.Price =Decimal.Parse( Console.ReadLine());
                 Console.WriteLine("Give the quantity ");
-               // product.Quantity =Int32.Parse( Console.ReadLine());
+                product.Quantity =Int32.Parse( Console.ReadLine());
                 return product;
             }
             catch(Exception  )
@@ -54,74 +54,74 @@ namespace CrmApp
         }
 
         
-        public Customer CreateCustomer()
-        {
-            Customer customer = new Customer();
-            try
-            {
-                Console.WriteLine("Give the Name ");
-                customer.Name = Console.ReadLine();
-                Console.WriteLine("Give the Sex ");
-                customer.Sex = Console.ReadLine();
-                Console.WriteLine("Give the Age ");
-                customer.Age = Int32.Parse(Console.ReadLine());
+        //public Customer CreateCustomer()
+        //{
+        //    Customer customer = new Customer();
+        //    try
+        //    {
+        //        Console.WriteLine("Give the Name ");
+        //        customer.Name = Console.ReadLine();
+        //        Console.WriteLine("Give the Sex ");
+        //        customer.Sex = Console.ReadLine();
+        //        Console.WriteLine("Give the Age ");
+        //        customer.Age = Int32.Parse(Console.ReadLine());
 
-                return customer;
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("You have not completed customer's questions properly." +
-                    " Please try again.");
-                return null;
-            }
+        //        return customer;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        Console.WriteLine("You have not completed customer's questions properly." +
+        //            " Please try again.");
+        //        return null;
+        //    }
             
-        }
+        //}
 
-        public Basket CreateBasket()
-        {
-            Basket basket = new Basket();
-            int choice;
-            basket.Load("basket.txt");
+        //public Basket CreateBasket()
+        //{
+        //    Basket basket = new Basket();
+        //    int choice;
+        //    basket.Load("basket.txt");
             
-            do
-            {
-                choice = Menu();
-                switch (choice)
-                {
-                    case 0:
-                        Console.WriteLine("You selected to exit");
-                        break;
-                    case 1:
-                        Product product = CreateProduct();
-                        basket.AddProduct(product);
-                        break;
-                    case 2:
-                        basket.Print();
-                        break;
-                    case 3:
-                        basket.ShowCategories();
-                        break;
-                    case 4:
-                        Console.WriteLine("TotalCost= " + basket.TotalCost());
-                        break;
-                    case 5:
-                        basket.Save("basket.txt");
-                        break;
-                    case 6:
-                        basket.Load("basket.txt");
-                        break;
-                    case 7:
-                        Customer customer = CreateCustomer();
-                        break;
-                    default:
-                        Console.WriteLine("Invalid number! Please type a number between 0 and 4.");
-                        break;
+        //    do
+        //    {
+        //        choice = Menu();
+        //        switch (choice)
+        //        {
+        //            case 0:
+        //                Console.WriteLine("You selected to exit");
+        //                break;
+        //            case 1:
+        //                Product product = CreateProduct();
+        //                basket.AddProduct(product);
+        //                break;
+        //            case 2:
+        //                basket.Print();
+        //                break;
+        //            case 3:
+        //                basket.ShowCategories();
+        //                break;
+        //            case 4:
+        //                Console.WriteLine("TotalCost= " + basket.TotalCost());
+        //                break;
+        //            case 5:
+        //                basket.Save("basket.txt");
+        //                break;
+        //            case 6:
+        //                basket.Load("basket.txt");
+        //                break;
+        //            case 7:
+        //                //Customer customer = CreateCustomer();
+        //                break;
+        //            default:
+        //                Console.WriteLine("Invalid number! Please type a number between 0 and 4.");
+        //                break;
 
-                }
-            }
-            while (choice != 0);
-            return basket;
-        }
+        //        }
+        //    }
+        //    while (choice != 0);
+        //    return basket;
+        //}
 
     }
 }

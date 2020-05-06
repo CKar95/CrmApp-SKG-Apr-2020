@@ -7,16 +7,6 @@ namespace CrmApp
 {
     public class Product
     {
-        ////fields
-        //private int category;
-        //private String code;
-
-        ////property that wraps the field code
-        //public string Code
-        //{
-        //    get { return "GR" + code; }
-        //    set { code = value; }
-        //}
         //other properties
         public int Id { get; set; }
         public string Name { get; set; }

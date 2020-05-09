@@ -1,4 +1,6 @@
 ﻿using CrmApp.Options;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CrmApp.Services
 {
@@ -36,9 +38,15 @@ namespace CrmApp.Services
 
         public Customer FindCustomerById(int id)
         {
+            return db.Customers.Find(id); ;
+        }
 
-            Customer customer = db.Customers.Find(id);
-            return customer;
+        public List<Customer> FindCustomerByName(CustomerOption custOption)
+        {
+            return db.Customers
+                .Where( cust => cust.FirstName == custOption.FirstName)
+                .Where(cust => cust.LastName == custOption.LastName)
+                .ToList();
         }
 
         public Customer Update(CustomerOption custOption, int customerId)

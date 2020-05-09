@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace CrmApp.Services
 {
-    class ProductManagment
+    public class ProductManagment
     {
         private CrmDbContext db;
 

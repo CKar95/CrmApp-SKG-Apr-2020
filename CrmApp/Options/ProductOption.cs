@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CrmApp.Options
 {
-    class ProductOption
+    public class ProductOption
     {
         public string Name { get; set; }
         public decimal Price { get; set; }

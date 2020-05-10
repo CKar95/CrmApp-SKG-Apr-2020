@@ -1,4 +1,5 @@
 ﻿using CrmApp.Options;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -38,7 +39,12 @@ namespace CrmApp.Services
 
         public Customer FindCustomerById(int id)
         {
-            return db.Customers.Find(id); ;
+            return db.Customers.Find(id);
+        }
+
+        public List<Customer> GetAllCustomers()
+        {
+            return db.Customers.ToList();
         }
 
         public List<Customer> FindCustomerByName(CustomerOption custOption)
@@ -62,6 +68,8 @@ namespace CrmApp.Services
                 customer.Email = custOption.Email;
             if (custOption.Address != null)
                 customer.Address = custOption.Address;
+            if (custOption.Dob != new DateTime())
+                customer.Dob = custOption.Dob;
 
             db.SaveChanges();
             return customer;
@@ -74,6 +82,20 @@ namespace CrmApp.Services
             if (customer != null)
             {
                 db.Customers.Remove(customer);
+                db.SaveChanges();
+                return true;
+            }
+            return false;
+
+        }
+
+        public bool SoftDeleteCustomerById(int id)
+        {
+
+            Customer customer = db.Customers.Find(id);
+            if (customer != null)
+            {
+                customer.Active = false;
                 db.SaveChanges();
                 return true;
             }

@@ -1,6 +1,7 @@
 ﻿using CrmApp.Options;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -37,6 +38,11 @@ namespace CrmApp.Services
 
             Product product = db.Products.Find(id);
             return product;
+        }
+
+        public List<Product> GetAllProducts()
+        {
+            return db.Products.ToList();
         }
 
         public Product UpdateProduct(ProductOption po, int id)
